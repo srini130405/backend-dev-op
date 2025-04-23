@@ -9,11 +9,9 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
-const s3 = new AWS.S3({  region: process.env.AWS_REGION,
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY,
-    secretAccessKey: process.env.AWS_SECRET_KEY
-  }
+const s3 = new AWS.S3({
+  region: process.env.AWS_REGION
+  // remove the credentials block!
 });
 
 const upload = multer({
